@@ -1,6 +1,8 @@
 package ai.mdotm.pets.infra.jpa;
 
+import ai.mdotm.pets.application.PetRepo;
 import ai.mdotm.pets.domain.Pet;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
@@ -12,6 +14,7 @@ public class PetJpaRepoMock {
         this.idGenerator = idGenerator;
     }
 
+    @Override
     public Optional<Pet> findById(long id) {
 
         if (id == 1234L) {
@@ -29,6 +32,7 @@ public class PetJpaRepoMock {
         return Optional.of(pet);
     }
 
+    @Override
     public Pet save(Pet input) {
         // Mock CREATE on save if ID is not present
         if (input.getId() == null) {
@@ -40,6 +44,7 @@ public class PetJpaRepoMock {
         return input;
     }
 
+    @Override
     public void deleteById(long id) {
         // No-op for mock
         // Actually, when there's entity corresponding with the id, JPA silently ignores it.
