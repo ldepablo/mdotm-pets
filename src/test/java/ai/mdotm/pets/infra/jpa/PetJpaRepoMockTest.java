@@ -57,4 +57,20 @@ public class PetJpaRepoMockTest {
 
         assertEquals(result, input.withId(result.getId()));
     }
+
+    @Test
+    public void shouldUpdatedEntityWhenUpdate() {
+        Pet input = Pet.builder()
+                .id(1010L)
+                .name("Charlie")
+                .species("Parrot")
+                .age(2)
+                .ownerName("Cynthia")
+                .build();
+
+        Pet result = sut.save(input);
+
+        assertEquals(result, input);
+
+    }
 }

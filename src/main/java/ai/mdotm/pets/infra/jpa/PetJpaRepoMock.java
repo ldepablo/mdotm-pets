@@ -30,9 +30,13 @@ public class PetJpaRepoMock {
     }
 
     public Pet save(Pet input) {
-        //Since there's no real DB and JPA would return created entity, we just need to return same Pet with newly
-        // generated ID
-        long generatedId = idGenerator.generateId();
-        return input.withId(generatedId);
+        // Mock CREATE on save if ID is not present
+        if (input.getId() == null) {
+            long generatedId = idGenerator.generateId();
+            return input.withId(generatedId);
+        }
+
+        // Mock UPDATE on save if ID is present
+        return input;
     }
 }
