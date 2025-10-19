@@ -19,4 +19,20 @@ public class PetServiceImpl {
     public Optional<Pet> findById(long id) {
         return repo.findById(id);
     }
+
+    public Pet create(Pet pet) {
+        //FIXME If pet ID is NOT null, exception should be thrown.
+        return repo.save(pet);
+    }
+
+    public Pet update(Pet pet) {
+        //FIXME If pet ID IS null, exception should be thrown.
+        return repo.save(pet);
+    }
+
+    public void deleteById(long id) {
+
+        repo.deleteById(id);
+        System.out.println("check");
+    }
 }

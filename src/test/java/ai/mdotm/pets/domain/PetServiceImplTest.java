@@ -11,7 +11,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class PetServiceImplTest {
@@ -43,7 +43,7 @@ class PetServiceImplTest {
     }
 
     @Test
-    public void testFindsByIdWhenNotExisting() {
+    public void shouldFindByIdWhenNotExisting() {
         long id = 1234L;
 
         when(repo.findById(id)).thenReturn(Optional.empty());
@@ -51,5 +51,42 @@ class PetServiceImplTest {
         var result = sut.findById(id);
 
         assertTrue(result.isEmpty());
+    }
+
+    @Test
+    public void shouldCreatePetWithNullId() {
+
+        Pet inputPet = new Pet.Builder()
+                .name("Whiskers")
+                .species("Cat")
+                .age(2)
+                .ownerName("Bob")
+                .build();
+        Pet outputPet = mock(Pet.class);
+        when(repo.save(inputPet)).thenReturn(outputPet);
+
+        var result = sut.create(inputPet);
+
+        assertEquals(outputPet, result);
+    }
+
+    @Test
+    public void shouldUpdatePetWithId() {
+
+        Pet inputPet = mock(Pet.class);
+        Pet outputPet = mock(Pet.class);
+        when(repo.save(inputPet)).thenReturn(outputPet);
+
+        var result = sut.update(inputPet);
+
+        assertEquals(outputPet, result);
+    }
+
+    @Test
+    public void shouldDeleteById() {
+        long id = 1234L;
+        sut.deleteById(id);
+
+        verify(repo).deleteById(id);
     }
 }
