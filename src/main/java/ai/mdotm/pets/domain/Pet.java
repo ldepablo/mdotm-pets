@@ -93,6 +93,16 @@ public class Pet {
         }
     }
 
+    public Pet withId(long id) {
+        return Pet.builder()
+                .id(id)
+                .name(this.name)
+                .species(this.species)
+                .age(this.age)
+                .ownerName(this.ownerName)
+                .build();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Pet pet)) return false;
