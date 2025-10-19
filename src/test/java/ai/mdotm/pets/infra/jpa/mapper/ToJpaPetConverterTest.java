@@ -12,7 +12,7 @@ class ToJpaPetConverterTest {
     private ToJpaPetConverter sut = new ToJpaPetConverter();
 
     @Test
-    public void testFromDomainToJpa() {
+    public void shouldConvertFromDomainToJpa() {
         long id = 1L;
         String name = "Max";
         String species = "Dog";
@@ -36,7 +36,7 @@ class ToJpaPetConverterTest {
     }
 
     @Test
-    public void testFromDomainToJpaWithoutId() {
+    public void shouldConvertFromDomainToJpaWithoutId() {
         String name = "Max";
         String species = "Dog";
         int age = 5;

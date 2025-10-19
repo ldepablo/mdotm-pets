@@ -11,7 +11,7 @@ class FromJpaPetConverterTest {
     private FromJpaPetConverter sut = new FromJpaPetConverter();
 
     @Test
-    public void testFromJpaToDomain() {
+    public void shouldConvertFromJpaToDomain() {
         long id = 1L;
         String name = "Max";
         String species = "Dog";
