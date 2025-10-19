@@ -5,10 +5,11 @@ import ai.mdotm.pets.infra.jpa.PetJpa;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class FromJpaPetConverterTest {
 
-    private FromJpaPetConverter sut = new FromJpaPetConverter();
+    private final FromJpaPetConverter sut = new FromJpaPetConverter();
 
     @Test
     public void shouldConvertFromJpaToDomain() {
@@ -27,6 +28,7 @@ class FromJpaPetConverterTest {
                 .build();
 
         PetJpa result = sut.convert(pet);
+        assertNotNull(result);
         assertEquals(id, result.getId());
         assertEquals(name, result.getName());
         assertEquals(species, result.getSpecies());

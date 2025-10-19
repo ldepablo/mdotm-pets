@@ -40,7 +40,7 @@ public class PetJpaRepoMock {
         return input;
     }
 
-    public void deleteById(long l) {
+    public void deleteById(long id) {
         // No-op for mock
         // Actually, when there's entity corresponding with the id, JPA silently ignores it.
     }
