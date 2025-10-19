@@ -6,6 +6,12 @@ import java.util.Optional;
 
 public class PetJpaRepoMock {
 
+    private final IdGenerator idGenerator;
+
+    public PetJpaRepoMock(IdGenerator idGenerator) {
+        this.idGenerator = idGenerator;
+    }
+
     public Optional<Pet> findById(long id) {
 
         if (id == 1234L) {
@@ -21,5 +27,12 @@ public class PetJpaRepoMock {
                 .ownerName("Arthur")
                 .build();
         return Optional.of(pet);
+    }
+
+    public Pet save(Pet input) {
+        //Since there's no real DB and JPA would return created entity, we just need to return same Pet with newly
+        // generated ID
+        long generatedId = idGenerator.generateId();
+        return input.withId(generatedId);
     }
 }
