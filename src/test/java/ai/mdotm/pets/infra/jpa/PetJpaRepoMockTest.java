@@ -73,4 +73,9 @@ public class PetJpaRepoMockTest {
         assertEquals(result, input);
 
     }
+
+    @Test
+    public void shouldDoNothingWhenDeleteById() {
+        sut.deleteById(1000L);
+    }
 }

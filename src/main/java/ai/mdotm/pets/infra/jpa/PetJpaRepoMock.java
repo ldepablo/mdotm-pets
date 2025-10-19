@@ -39,4 +39,9 @@ public class PetJpaRepoMock {
         // Mock UPDATE on save if ID is present
         return input;
     }
+
+    public void deleteById(long l) {
+        // No-op for mock
+        // Actually, when there's entity corresponding with the id, JPA silently ignores it.
+    }
 }
