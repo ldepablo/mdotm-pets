@@ -1,5 +1,7 @@
 package ai.mdotm.pets.domain;
 
+import ai.mdotm.pets.application.exception.DomainValidationException;
+
 import java.util.Objects;
 
 // I'd definitely use Lombok here but not sure whether the person correcting it will have it installed, so I decided to
@@ -16,13 +18,13 @@ public class Pet {
 
         // I could use Jakarta Validation here but decided to go for manual validation in the domain for simplicity.
         if (builder.name == null || builder.name.isBlank()) {
-            throw new IllegalArgumentException("Name is required");
+            throw new DomainValidationException("Name is required");
         }
         if (builder.species == null || builder.species.isBlank()) {
-            throw new IllegalArgumentException("Species is required");
+            throw new DomainValidationException("Species is required");
         }
         if (builder.age != null && builder.age < 0) {
-            throw new IllegalArgumentException("Age must be >= 0");
+            throw new DomainValidationException("Age must be >= 0");
         }
 
         this.id = builder.id;
