@@ -1,7 +1,7 @@
 package ai.mdotm.pets.infra.rest.mapper;
 
 import ai.mdotm.pets.domain.Pet;
-import ai.mdotm.pets.infra.rest.PetResponse;
+import ai.mdotm.pets.infra.rest.dto.PetResponse;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

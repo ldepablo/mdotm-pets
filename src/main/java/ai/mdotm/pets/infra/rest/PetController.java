@@ -2,6 +2,9 @@ package ai.mdotm.pets.infra.rest;
 
 import ai.mdotm.pets.application.PetService;
 import ai.mdotm.pets.domain.Pet;
+import ai.mdotm.pets.infra.rest.dto.CreatePetRequest;
+import ai.mdotm.pets.infra.rest.dto.PetResponse;
+import ai.mdotm.pets.infra.rest.dto.UpdatePetRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;

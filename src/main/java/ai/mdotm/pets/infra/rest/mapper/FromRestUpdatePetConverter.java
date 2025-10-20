@@ -1,7 +1,7 @@
 package ai.mdotm.pets.infra.rest.mapper;
 
 import ai.mdotm.pets.domain.Pet;
-import ai.mdotm.pets.infra.rest.UpdatePetRequest;
+import ai.mdotm.pets.infra.rest.dto.UpdatePetRequest;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
