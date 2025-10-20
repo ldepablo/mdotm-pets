@@ -38,4 +38,14 @@ public class PetController {
                 .status(HttpStatus.OK)
                 .body(petResponse);
     }
+
+    public ResponseEntity<PetResponse> create(CreatePetRequest request) {
+        Pet pet = mapper.convert(request, Pet.class);
+        Pet createdPet = service.create(pet);
+        PetResponse response = mapper.convert(createdPet, PetResponse.class);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(response);
+    }
 }

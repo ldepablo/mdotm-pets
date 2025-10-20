@@ -58,4 +58,26 @@ public class PetControllerTest {
 
     }
 
+    @Test
+    public void shouldReturns202WhenCreate() {
+
+        Pet inputPet = mock(Pet.class);
+        CreatePetRequest request = mock(CreatePetRequest.class);
+        when(conversionService.convert(request, Pet.class)).thenReturn(inputPet);
+
+        Pet outputPet = mock(Pet.class);
+        when(petService.create(inputPet)).thenReturn(outputPet);
+
+        PetResponse response = mock(PetResponse.class);
+        when(conversionService.convert(outputPet, PetResponse.class)).thenReturn(response);
+
+        var result = sut.create(request);
+
+        assertEquals(HttpStatus.CREATED, result.getStatusCode());
+        assertEquals(response, result.getBody());
+
+    }
+
+
+
 }
