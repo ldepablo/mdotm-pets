@@ -1,0 +1,124 @@
+{
+  "name": "mdotm",
+  "version": "1",
+  "items": [
+    {
+      "type": "http",
+      "name": "Get Pet",
+      "filename": "Get Pet.bru",
+      "seq": 2,
+      "request": {
+        "url": "http://localhost:8080/pets/1001",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Create Pet",
+      "filename": "Create Pet.bru",
+      "seq": 3,
+      "request": {
+        "url": "http://localhost:8080/pets",
+        "method": "POST",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"name\": \"Rocky\",\n  \"species\": \"Dog\",\n  \"age\": 4,\n  \"ownerName\": \"Luis de Pablo\"\n}\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Update Pet",
+      "filename": "Update Pet.bru",
+      "seq": 4,
+      "request": {
+        "url": "http://localhost:8080/pets",
+        "method": "PATCH",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "json",
+          "json": "{\n  \"id\": 1004,\n  \"name\": \"Rocky\",\n  \"species\": \"Dog\",\n  \"age\": 4,\n  \"ownerName\": \"Luis de Pablo\"\n}\n",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    },
+    {
+      "type": "http",
+      "name": "Delete Pet By ID",
+      "filename": "Delete Pet By ID.bru",
+      "seq": 5,
+      "request": {
+        "url": "http://localhost:8080/pets/1234",
+        "method": "DELETE",
+        "headers": [],
+        "params": [],
+        "body": {
+          "mode": "none",
+          "formUrlEncoded": [],
+          "multipartForm": [],
+          "file": []
+        },
+        "script": {},
+        "vars": {},
+        "assertions": [],
+        "tests": "",
+        "docs": "",
+        "auth": {
+          "mode": "inherit"
+        }
+      }
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "mdotm",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ],
+    "size": 0,
+    "filesCount": 0
+  }
+}
