@@ -2,6 +2,7 @@ package ai.mdotm.pets.infra.rest;
 
 import ai.mdotm.pets.application.PetService;
 import ai.mdotm.pets.domain.Pet;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class PetController {
     }
 
     @PostMapping
-    public ResponseEntity<PetResponse> create(@RequestBody CreatePetRequest request) {
+    public ResponseEntity<PetResponse> create(@Valid @RequestBody CreatePetRequest request) {
         Pet pet = mapper.convert(request, Pet.class);
         Pet createdPet = service.create(pet);
         PetResponse response = mapper.convert(createdPet, PetResponse.class);
@@ -53,7 +54,7 @@ public class PetController {
     }
 
     @PatchMapping
-    public ResponseEntity<PetResponse> update(@RequestBody UpdatePetRequest request) {
+    public ResponseEntity<PetResponse> update(@Valid @RequestBody UpdatePetRequest request) {
         Pet pet = mapper.convert(request, Pet.class);
         Pet createdPet = service.update(pet);
         PetResponse response = mapper.convert(createdPet, PetResponse.class);
