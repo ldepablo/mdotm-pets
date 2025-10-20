@@ -1,6 +1,7 @@
 package ai.mdotm.pets.domain;
 
 import ai.mdotm.pets.application.PetRepo;
+import ai.mdotm.pets.application.exception.DomainValidationException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -9,8 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -68,6 +68,20 @@ class PetServiceImplTest {
         var result = sut.create(inputPet);
 
         assertEquals(outputPet, result);
+    }
+
+    @Test
+    public void shouldThrowDomainValidationExceptionWhenCreatingAndIdIsNotNull() {
+
+        Pet inputPet = new Pet.Builder()
+                .id(100L)
+                .name("Whiskers")
+                .species("Cat")
+                .age(2)
+                .ownerName("Bob")
+                .build();
+
+        assertThrows(DomainValidationException.class, () -> sut.create(inputPet));
     }
 
     @Test

@@ -2,6 +2,7 @@ package ai.mdotm.pets.domain;
 
 import ai.mdotm.pets.application.PetRepo;
 import ai.mdotm.pets.application.PetService;
+import ai.mdotm.pets.application.exception.DomainValidationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +25,17 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public Pet create(Pet pet) {
-        //FIXME If pet ID is NOT null, exception should be thrown.
+        if (pet.getId() != null) {
+            throw new DomainValidationException("New pet ID must be null when creating.");
+        }
         return repo.save(pet);
     }
 
     @Override
     public Pet update(Pet pet) {
-        //FIXME If pet ID IS null, exception should be thrown.
+        if (pet.getId() == null) {
+            throw new DomainValidationException("ID must be null when updating Pet.");
+        }
         return repo.save(pet);
     }
 
