@@ -58,4 +58,12 @@ public class PetController {
                 .status(HttpStatus.OK)
                 .body(response);
     }
+
+    public ResponseEntity<Void> deleteById(long id) {
+        service.deleteById(id);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .build();
+    }
 }
