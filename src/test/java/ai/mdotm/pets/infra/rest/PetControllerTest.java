@@ -59,7 +59,7 @@ public class PetControllerTest {
     }
 
     @Test
-    public void shouldReturns202WhenCreate() {
+    public void shouldReturn202WhenCreate() {
 
         Pet inputPet = mock(Pet.class);
         CreatePetRequest request = mock(CreatePetRequest.class);
@@ -74,6 +74,26 @@ public class PetControllerTest {
         var result = sut.create(request);
 
         assertEquals(HttpStatus.CREATED, result.getStatusCode());
+        assertEquals(response, result.getBody());
+
+    }
+
+    @Test
+    public void shouldReturn200WhenUpdate() {
+
+        Pet inputPet = mock(Pet.class);
+        UpdatePetRequest request = mock(UpdatePetRequest.class);
+        when(conversionService.convert(request, Pet.class)).thenReturn(inputPet);
+
+        Pet outputPet = mock(Pet.class);
+        when(petService.update(inputPet)).thenReturn(outputPet);
+
+        PetResponse response = mock(PetResponse.class);
+        when(conversionService.convert(outputPet, PetResponse.class)).thenReturn(response);
+
+        var result = sut.update(request);
+
+        assertEquals(HttpStatus.OK, result.getStatusCode());
         assertEquals(response, result.getBody());
 
     }
