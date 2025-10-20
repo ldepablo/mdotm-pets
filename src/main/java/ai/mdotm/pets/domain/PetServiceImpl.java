@@ -36,8 +36,6 @@ public class PetServiceImpl implements PetService {
 
     @Override
     public void deleteById(long id) {
-
         repo.deleteById(id);
-        System.out.println("check");
     }
 }
