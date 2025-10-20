@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -44,7 +41,8 @@ public class PetController {
                 .body(petResponse);
     }
 
-    public ResponseEntity<PetResponse> create(CreatePetRequest request) {
+    @PostMapping
+    public ResponseEntity<PetResponse> create(@RequestBody CreatePetRequest request) {
         Pet pet = mapper.convert(request, Pet.class);
         Pet createdPet = service.create(pet);
         PetResponse response = mapper.convert(createdPet, PetResponse.class);
@@ -54,7 +52,8 @@ public class PetController {
                 .body(response);
     }
 
-    public ResponseEntity<PetResponse> update(UpdatePetRequest request) {
+    @PatchMapping
+    public ResponseEntity<PetResponse> update(@RequestBody UpdatePetRequest request) {
         Pet pet = mapper.convert(request, Pet.class);
         Pet createdPet = service.update(pet);
         PetResponse response = mapper.convert(createdPet, PetResponse.class);
@@ -64,7 +63,8 @@ public class PetController {
                 .body(response);
     }
 
-    public ResponseEntity<Void> deleteById(long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable long id) {
         service.deleteById(id);
 
         return ResponseEntity
